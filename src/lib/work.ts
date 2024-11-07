@@ -1,6 +1,6 @@
-import {computeTransparentPixelCount} from "./computeTransparentPixelCount.ts";
+import {computeTransparentPixelCount} from "./canvas/computeTransparentPixelCount.ts";
 import type {Dimensions} from "./Dimensions.ts";
-import {drawImage} from "./drawImage.ts";
+import {drawImage} from "./canvas/realizeImageRequest.ts";
 import type {Image} from "./Image.ts";
 
 function generateImage(
@@ -14,8 +14,8 @@ function generateImage(
 			x: Math.random() * dimensionsPixels.width,
 			y: Math.random() * dimensionsPixels.height,
 		},
-		relativeScale: 0.05 * 0.9 ** tryIndex,
-		rotationRadians: 0.3 * (Math.random() * 2 - 1),
+		relativeScale: 0.01 * 0.99 ** tryIndex,
+		rotationRadians: 0.2 * (Math.random() * 2 - 1),
 	};
 }
 

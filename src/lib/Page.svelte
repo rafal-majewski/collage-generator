@@ -1,22 +1,17 @@
 <script lang="ts">
-	import Canvas from "../lib/Canvas.svelte";
-	import ImagesForm from "../lib/ImagesForm.svelte";
-	let sources: readonly HTMLImageElement[] | null = $state.raw(null);
+	import Canvas from "./canvas/Canvas.svelte";
+	import QueryForm from "./query-form/QueryForm.svelte";
+	import type {Query} from "./Query.ts";
+	let query: Query | null = $state.raw(null);
 
-	function handleSourcesSubmission(newSources: readonly HTMLImageElement[]): void {
-		sources = newSources;
+	function handleFormSubmission(newQuery: Query): void {
+		query = newQuery;
 	}
 </script>
 
 <div>
-	<ImagesForm onImagesSubmission={handleSourcesSubmission} />
-	{#if sources !== null}
-		<Canvas
-			{sources}
-			dimensions={{
-				width: 800,
-				height: 800,
-			}}
-		/>
+	<QueryForm onSubmission={handleFormSubmission} />
+	{#if query !== null}
+		<Canvas {query} />
 	{/if}
 </div>

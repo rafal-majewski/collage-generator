@@ -4,9 +4,10 @@ export function computeTransparentPixelCount(
 	const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
 	let transparentPixelCount = 0;
 
-	for (let pixelIndex = 0; pixelIndex < imageData.data.length; pixelIndex += 4) {
-		const alpha = imageData.data[pixelIndex + 3] as number;
-		transparentPixelCount += 1 - alpha / 255;
+	for (let byteIndex = 0; byteIndex < imageData.data.length; byteIndex += 4) {
+		const alphaByte = imageData.data[byteIndex + 3] as number;
+		const alphaPercentage = alphaByte / 255;
+		transparentPixelCount += 1 - alphaPercentage;
 	}
 
 	return transparentPixelCount;
