@@ -21,7 +21,7 @@ export function generateImageRequest(
 	const allImagePixelCount = image.width * image.height;
 	const baseScale = query.maximalOverlayImagePixelCount / allImagePixelCount;
 
-	const relativescale = 0.9999 ** tryIndex;
+	const relativescale = 0.99995 ** tryIndex;
 	const totalScale = baseScale * relativescale;
 
 	return {
